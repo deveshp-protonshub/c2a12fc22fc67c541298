@@ -1,8 +1,8 @@
 <h3><%= @question.question %></h3>
 <br>
-Follow this User: <%= link_to "#{@question.user.email}", follow_user_path(@question.user), method: :post, class: 'follow_user'%>
+Follow this User: <%= link_to "#{@question.user.email}", follow_user_path(@question.user), method: :post, class: 'follow_user'%><br>
 <br>
-Follow this Topic: <%= link_to "#{@question.topic.topic}", follow_topic_path(@question.topic), method: :post, class: 'follow_topic'%>
+Follow this Topic: <%= link_to "#{@question.topic.topic}", follow_topic_path(@question.topic), method: :post, class: 'follow_topic'%><br>
 
 <br>
 <h2>Answers</h2>
