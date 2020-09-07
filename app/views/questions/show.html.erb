@@ -1,0 +1,24 @@
+<h3><%= @question.question %></h3>
+<br>
+Follow this User: <%= link_to "#{@question.user.email}", follow_user_path(@question.user), method: :post, class: 'follow_user'%>
+<br>
+Follow this Topic: <%= link_to "#{@question.topic.topic}", follow_topic_path(@question.topic), method: :post, class: 'follow_topic'%>
+
+<br>
+<h2>Answers</h2>
+<% @question.answers.each do |answer| %>
+	<p class="answer">Answer:<%= "#{answer.answer}"%></p>
+<%end%>
+
+<br>
+
+<h2>Submit your answer</h2>
+<%= form_for :answer, url: question_answers_path(@question.id) do |form | %>
+	<p>
+		<%= form.label :answer%>
+		<%=form.text_field :answer%>
+	</p>
+	<p>
+		<%=form.submit%>
+	</p>
+<%end%>

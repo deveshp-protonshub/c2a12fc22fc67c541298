@@ -1,0 +1,33 @@
+<h1>All Questions</h1>
+
+<%@questions.each do |question| %>
+	<%= link_to "Question:- #{question.question}", question_path(question), class: 'question' %><br>
+<%end%>
+	
+
+<h2>Create new question</h2>
+
+<%= form_for :question, url:questions_path do |form| %>
+	<p>
+		<%= form.label :question %><br>
+		<%= form.text_field :question %>
+	</p>
+	<p>
+		<%= form.label :topic %><br>
+		<%= form.select :topic_id, Topic.all.map{ |t| [t.topic, t.id]} %>
+	</p>
+	<p>
+		<%= form.submit %>
+	</p>
+
+<% end %>
+
+<h2>Topics</h2>
+	<% @topics.each do |topic| %>
+	Follow this topic: <%= link_to "#{topic.topic}", follow_topic_path(topic), method: :post, class: 'follow_topic'%> 
+	| followers.count: <%=Topic.last.topic_followers.count %><br>
+<%end%>
+
+
+
+
